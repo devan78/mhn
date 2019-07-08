@@ -12,9 +12,9 @@ apt install -y default-jre
 
 # Install ES
 wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch |  apt-key add -
-echo 'deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main' |  tee /etc/apt/sources.list.d/elasticsearch.list
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 apt-get update
-apt-get -y install elasticsearch=1.4.4
+apt-get -y install elasticsearch
 sed -i '/network.host/c\network.host\:\ localhost' /etc/elasticsearch/elasticsearch.yml
 service elasticsearch restart
 update-rc.d elasticsearch defaults 95 10
@@ -22,8 +22,8 @@ update-rc.d elasticsearch defaults 95 10
 # Install Kibana
 mkdir /tmp/kibana
 cd /tmp/kibana ;
-wget https://download.elasticsearch.org/kibana/kibana/kibana-4.0.1-linux-x64.tar.gz
-tar xvf kibana-4.0.1-linux-x64.tar.gz
+wget https://artifacts.elastic.co/downloads/kibana/kibana-7.2.0-linux-x86_64.tar.gz
+tar xvf kibana-7.2.0-linux-x86_64.tar.gz
 sed -i '/0.0.0.0/c\host\:\ localhost' /etc/elasticsearch/elasticsearch.yml
 mkdir -p /opt/kibana
 cp -R /tmp/kibana/kibana-4*/* /opt/kibana/
@@ -42,7 +42,7 @@ EOF
 
 # Install Logstash
 
-echo 'deb http://packages.elasticsearch.org/logstash/1.5/debian stable main' |  tee /etc/apt/sources.list.d/logstash.list
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 apt-get update
 apt-get install logstash
 cd /opt/logstash
