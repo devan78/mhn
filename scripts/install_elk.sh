@@ -26,8 +26,8 @@ wget https://artifacts.elastic.co/downloads/kibana/kibana-7.2.0-linux-x86_64.tar
 tar xvf kibana-7.2.0-linux-x86_64.tar.gz
 sed -i '/0.0.0.0/c\host\:\ localhost' /etc/elasticsearch/elasticsearch.yml
 mkdir -p /opt/kibana
-cp -R /tmp/kibana/kibana-4*/* /opt/kibana/
-rm -rf /tmp/kibana/kibana-4*
+cp -R /tmp/kibana/kibana-7*/* /opt/kibana/
+rm -rf /tmp/kibana/kibana-7*
 
 cat > /etc/supervisor/conf.d/kibana.conf <<EOF
 [program:kibana]
