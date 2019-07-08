@@ -8,9 +8,7 @@ $DIR/install_hpfeeds-logger-json.sh
 
 # install Java
 apt-get install -y software-properties-common
-add-apt-repository -y ppa:webupd8team/java
-apt-get update
-apt-get -y install oracle-java8-installer
+apt install -y default-jre
 
 # Install ES
 wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch |  apt-key add -
