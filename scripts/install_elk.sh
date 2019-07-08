@@ -47,7 +47,7 @@ apt-get update
 apt-get install logstash
 cd /opt/logstash
 
-cat > /opt/logstash/mhn.conf <<EOF
+cat > /etc/logstash/conf.d/mhn.conf <<EOF
 
 input {
   file {
@@ -101,7 +101,7 @@ output {
 
 EOF
 
-cat > /opt/logstash/mhn-template.json <<EOF
+cat > /etc/logstash/conf.d/mhn-template.json <<EOF
 {
   "template": "mhn-*",
   "settings": {
